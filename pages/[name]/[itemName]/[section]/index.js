@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import { Router } from "next/router";
+import { useRouter } from "next/router";
 
 export default function Section({
   posts,
@@ -9,6 +9,7 @@ export default function Section({
   acc = "blue",
   logo = "ri-dashboard-fill",
 }) {
+  const router = useRouter();
   return (
     <div>
       <Head>
@@ -28,25 +29,37 @@ export default function Section({
           </button>
           <div></div>
 
-          <button className="backButton">
+          <button
+            className={`backButton ${acc}Btn`}
+            onClick={() => {
+              router.back();
+            }}
+          >
             <i className="ri-arrow-go-back-fill"></i>
           </button>
         </div>
         <section className="postSection">
-          <h1>
-            {itemName} / <span>{section}</span>
-          </h1>
+          <div className="postHead">
+            <p>{itemName}</p>
+            <h2 className={`${acc}Txt`}>{section}</h2>
+          </div>
+
           <div className="listPost">
             {posts.map((post) => (
-              <div className="item">
-                <div className="thumbnail">
-                  <img src={post.thumbnail} alt="" />
+              <Link
+                key={post.thumbnail + post.title}
+                href={`${router.asPath}/post`}
+              >
+                <div className="item">
+                  <div className="thumbnail">
+                    <img src={post.thumbnail} alt="" />
+                  </div>
+                  <div className="container">
+                    <h1>{post.title}</h1>
+                    <p>{post.description}</p>
+                  </div>
                 </div>
-                <div className="container">
-                  <h1>{post.title}</h1>
-                  <p>{post.description}</p>
-                </div>
-              </div>
+              </Link>
             ))}
           </div>
         </section>
