@@ -1,0 +1,379 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap");
+
+:root {
+  --bg: #17181a;
+  --primary: #ffffff;
+
+  --blue-txt: #c1d4ff;
+  --blue-bg: hsla(222, 63%, 62%, 0.2);
+
+  --green-txt: #61dbb2;
+  --green-bg: hsl(160, 63%, 62%, 0.2);
+
+  --font: "Poppins", sans-serif;
+}
+
+::-webkit-scrollbar {
+  background: transparent;
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  size: 1px;
+  border-radius: 10px;
+}
+
+.blue {
+  color: var(--blue-txt);
+  background: var(--blue-bg);
+
+  i {
+    color: var(--blue-bg);
+  }
+
+  .usetxt {
+    color: var(--blue-txt);
+  }
+}
+
+.green {
+  color: var(--green-txt);
+  background: var(--green-bg);
+
+  i {
+    color: var(--green-bg);
+  }
+
+  .usetxt {
+    color: var(--green-txt);
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font);
+}
+
+body {
+  background: var(--bg);
+}
+
+.heading {
+  width: 100vw;
+  display: grid;
+  place-content: center;
+  margin-top: 15rem;
+  img {
+    width: 15rem;
+  }
+}
+
+.mCategories {
+  $cardWidth: 20rem;
+  $paddingG: 2.5rem;
+  display: grid;
+  width: 100vw;
+  padding: 5rem $paddingG;
+
+  grid-template-columns: repeat(auto-fit, $cardWidth);
+  place-content: center;
+  gap: $paddingG;
+
+  .mCard {
+    position: relative;
+    width: $cardWidth;
+    height: 8rem;
+    //background: red;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+    transition: filter 500ms 50ms ease, transform 500ms 50ms ease;
+
+    &:hover {
+      filter: brightness(1.2);
+      transform: scale(1.05);
+    }
+
+    &:active {
+      filter: brightness(1.2);
+      transform: scale(0.95);
+    }
+
+    p {
+      font-size: 1.9rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      width: min-content;
+      margin-left: 1.5rem;
+    }
+
+    i {
+      position: absolute;
+      bottom: 0;
+      font-size: 8rem;
+      transform: rotate(-20deg);
+      right: 2%;
+    }
+  }
+}
+
+.sideBar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 20rem;
+
+  padding: 15rem 1.5rem 1.5rem 1.5rem;
+
+  i {
+    position: absolute;
+    font-size: 8rem;
+    transform: rotate(-20deg) translateX(-60%);
+    left: 50%;
+    top: 3rem;
+  }
+
+  .sideHead {
+    font-weight: 600;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+  }
+
+  .list {
+    height: calc(100% - 3rem);
+    width: 100%;
+    overflow-y: auto;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+
+    .item {
+      font-size: 1.1rem;
+      font-weight: 300;
+      letter-spacing: 1px;
+      user-select: none;
+      cursor: pointer;
+    }
+
+    .active {
+      cursor: unset;
+      font-weight: 600;
+      font-size: 1.3rem;
+
+      &::before {
+        content: ">";
+        font-size: 1.5rem;
+        padding-right: 0.5rem;
+      }
+    }
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--blue-bg);
+  }
+}
+
+.subCategorySection {
+  position: absolute;
+  right: 0;
+  width: calc(100% - 20rem);
+  min-height: 100vh;
+
+  padding-top: 6rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 2rem;
+
+  h1 {
+    color: var(--primary);
+    font-size: 3.5rem;
+    letter-spacing: 1px;
+    margin-bottom: 3.5rem;
+  }
+  .listCategory {
+    height: 100%;
+    width: 100%;
+    //background: red;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    //grid-template-columns: repeat(auto-fit, 15rem);
+    gap: 2rem;
+
+    .item {
+      //min-width: 15rem;
+      height: 4.5rem;
+      //background: blue;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      user-select: none;
+      gap: 1rem;
+      padding: 1rem;
+      cursor: pointer;
+
+      transition: filter 500ms 50ms ease, transform 500ms 50ms ease;
+
+      &:hover {
+        filter: brightness(1.1) saturate(1.2);
+        transform: scale(1.05);
+      }
+
+      &:active {
+        filter: brightness(1.1) saturate(1.2);
+        transform: scale(1);
+      }
+
+      i {
+        font-size: 2.5rem;
+      }
+
+      p {
+        text-align: center;
+        font-weight: 600;
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+      }
+    }
+  }
+}
+
+// Sub of Sub Topic
+.subSideBar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 5.5rem;
+  padding: 1.5rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+
+  button {
+    background: transparent;
+    border: none;
+    display: grid;
+    place-content: center;
+    i {
+      font-size: 3rem;
+      transform: rotate(-20deg);
+    }
+  }
+  div {
+    height: 100%;
+  }
+
+  .backButton {
+    padding: 0.8rem;
+    border-radius: 10px;
+    transition: transform 500ms ease, background 500ms ease;
+    cursor: pointer;
+
+    i {
+      font-size: 1.8rem;
+      color: var(--blue-txt);
+      opacity: 0.9;
+      transform: unset;
+    }
+
+    &:hover {
+      background: var(--blue-bg);
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+}
+
+.postSection {
+  position: absolute;
+  right: 0;
+  width: calc(100% - 5.5rem);
+  min-height: 100vh;
+
+  padding-top: 6rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 2rem;
+
+  h1 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 3.5rem;
+    font-weight: 300;
+    span {
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--blue-txt);
+    }
+  }
+  .listPost {
+    height: 100%;
+    width: 100%;
+    //background: red;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 25rem);
+
+    gap: 2rem;
+
+    .item {
+      max-width: 25rem;
+
+      background: #1b1c1f;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 0rem;
+
+      .thumbnail {
+        width: 100%;
+        height: 14rem;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 4px 4px 0px 0px;
+        }
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 0rem;
+        padding: 2rem 1rem;
+        h1 {
+          margin-bottom: unset;
+          font-weight: 600;
+          letter-spacing: 1px;
+          font-size: 1.25rem;
+          margin-bottom: 0.2rem;
+        }
+        p {
+          padding-top: 0.2rem;
+          font-size: 1rem;
+          font-weight: 300;
+          letter-spacing: 1px;
+          line-height: 1.6rem;
+          color: white;
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+}
