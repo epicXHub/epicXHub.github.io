@@ -22,7 +22,7 @@ export default function Home({ items }) {
         <div className="mCategories">
           {items.map((item) => {
             return (
-              <Link href={`/${item.name.toLowerCase()}`}>
+              <Link key={item.name} href={`/${item.name.toLowerCase()}`}>
                 <div className={`mCard ${item.acc}`}>
                   <p>{item.name}</p>
                   <i className={item.logo}></i>

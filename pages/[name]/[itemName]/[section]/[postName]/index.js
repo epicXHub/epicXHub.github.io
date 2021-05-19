@@ -91,8 +91,8 @@ export default function Section({
           <ReactMarkdown
             components={components}
             className="markdown"
-            //children={markdownData}
-            children={source}
+            children={markdownData}
+            //children={source}
             rehypePlugins={[rehypeRaw]}
             remarkPlugins={[[gfm, { singleTilde: false }]]}
           />
