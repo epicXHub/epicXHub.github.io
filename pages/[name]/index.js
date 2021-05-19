@@ -80,7 +80,7 @@ export default function category({ configs, items }) {
             className="listCategory"
           >
             <AnimatePresence>
-              {oState !== undefined ??
+              {oState !== undefined &&
                 oState.options.map((item) => (
                   <motion.div
                     key={item.name}
