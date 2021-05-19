@@ -3,6 +3,8 @@
 
 :root {
   --bg: #17181a;
+  --sBg: #272a2e;
+  --sBg2: #303438;
   --primary: #ffffff;
   --sub-primary: #dadada;
 
@@ -17,13 +19,16 @@
 }
 
 ::-webkit-scrollbar {
-  background: transparent;
-  width: 5px;
+  background: var(--sBg);
+  width: 1rem;
+  // all: unset;
 }
 
 ::-webkit-scrollbar-thumb {
   size: 1px;
-  border-radius: 10px;
+  border-radius: 4px;
+  background: var(--sBg2);
+  filter: brightness(1.5);
 }
 
 .blue {
@@ -153,12 +158,15 @@ body {
     font-size: 1.3rem;
     letter-spacing: 1px;
     margin-bottom: 1rem;
+    text-transform: capitalize;
   }
 
   .list {
     height: calc(100% - 3rem);
     width: 100%;
     overflow-y: auto;
+    overflow-x: hidden;
+    //background: red;
     display: flex;
     gap: 1rem;
     flex-direction: column;
@@ -174,13 +182,13 @@ body {
     .active {
       cursor: unset;
       font-weight: 600;
-      font-size: 1.3rem;
+      //font-size: 1.3rem;
 
-      &::before {
-        content: ">";
-        font-size: 1.5rem;
-        padding-right: 0.5rem;
-      }
+      // &::before {
+      //   content: ">";
+      //   font-size: 1.5rem;
+      //   padding-right: 0.5rem;
+      // }
     }
   }
 
@@ -453,10 +461,56 @@ body {
   gap: 1rem;
   letter-spacing: 1px;
 
+  table {
+    background: var(--quote);
+    width: fit-content !important;
+    //padding: 1rem;
+    border-spacing: 0px !important;
+    thead {
+      background: var(--sBg);
+      tr {
+        th {
+          padding: 0.5rem 1rem;
+        }
+      }
+    }
+    tbody {
+      color: var(--sub-txt);
+      tr {
+        transition: background 500ms ease;
+        &:hover {
+          background: var(--sBg);
+        }
+        td {
+          padding: 1rem;
+
+          transition: background 500ms ease;
+          &:hover {
+            background: var(--sBg2);
+          }
+        }
+      }
+    }
+  }
+
+  img {
+    width: 100%;
+    max-width: fit-content;
+  }
+
   p {
     font-weight: 300;
     color: var(--sub-txt);
     line-height: 2rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--anchor);
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   li {
@@ -467,6 +521,14 @@ body {
   ol,
   ul {
     margin-left: 2rem;
+    margin-top: 1rem;
+  }
+
+  hr {
+    height: 1px;
+    border: none;
+    background: var(--sub-primary);
+    opacity: 0.4;
   }
 
   h1,
@@ -477,6 +539,15 @@ body {
   h6 {
     margin-top: 1rem;
     font-weight: 600;
+
+    a {
+      text-decoration: none;
+      color: var(--anchor);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   pre {
@@ -498,7 +569,10 @@ body {
       background: transparent !important;
       border: 0px solid var(--blue-bg) !important;
       box-shadow: unset !important;
-      padding: 0.6rem 1rem !important;
+      padding: 1rem 1rem !important;
+      margin: 0 !important;
+      margin-left: 0.2rem !important;
+      width: calc(100% - 0.4rem);
 
       * {
         text-shadow: none !important;
