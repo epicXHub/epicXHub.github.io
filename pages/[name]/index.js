@@ -8,7 +8,9 @@ import Include from "../../components/Include";
 export default function category({ configs, items }) {
   const router = useRouter();
   const [mState, setMState] = useState(items);
-  const [oState, setOState] = useState(mState[0] !== null ? mState[0] : []);
+  const [oState, setOState] = useState(
+    mState[0] !== null ? mState[0] : undefined
+  );
 
   const doSelect = (name) => {
     // Updating Selection list
@@ -26,7 +28,11 @@ export default function category({ configs, items }) {
   return (
     <div>
       <Include
-        title={oState.name.charAt(0).toUpperCase() + oState.name.slice(1)}
+        title={
+          oState !== undefined
+            ? oState.name.charAt(0).toUpperCase() + oState.name.slice(1)
+            : ""
+        }
       />
 
       <main>
@@ -74,22 +80,23 @@ export default function category({ configs, items }) {
             className="listCategory"
           >
             <AnimatePresence>
-              {oState.options.map((item) => (
-                <motion.div
-                  key={item.name}
-                  variants={headVariants}
-                  initial="hide"
-                  animate="show"
-                  exit="hide"
-                >
-                  <Link href={`${router.asPath}/${oState.name}/${item.name}`}>
-                    <div key={item.name} className={`item ${configs.acc}`}>
-                      <i className={`${item.logo} usetxt`}></i>
-                      <p>{item.name}</p>
-                    </div>
-                  </Link>
-                </motion.div>
-              ))}
+              {oState !== undefined ??
+                oState.options.map((item) => (
+                  <motion.div
+                    key={item.name}
+                    variants={headVariants}
+                    initial="hide"
+                    animate="show"
+                    exit="hide"
+                  >
+                    <Link href={`${router.asPath}/${oState.name}/${item.name}`}>
+                      <div key={item.name} className={`item ${configs.acc}`}>
+                        <i className={`${item.logo} usetxt`}></i>
+                        <p>{item.name}</p>
+                      </div>
+                    </Link>
+                  </motion.div>
+                ))}
             </AnimatePresence>
           </motion.div>
         </section>
@@ -105,7 +112,10 @@ export async function getStaticProps(context) {
   const data = await res.json();
 
   let cItems = data.items.map((item) => ({ ...item, selected: false }));
-  cItems[0].selected = true;
+
+  if (cItems.length > 0) {
+    cItems[0].selected = true;
+  }
 
   return {
     props: { configs: data.configs, items: cItems },

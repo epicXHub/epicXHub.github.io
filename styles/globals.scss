@@ -14,6 +14,21 @@
   --green-txt: #61dbb2;
   --green-bg: hsl(160, 63%, 62%, 0.2);
 
+  --yellow-txt: hsl(60, 63%, 62%);
+  --yellow-bg: hsl(60, 63%, 62%, 0.2);
+
+  --red-txt: hsl(0, 63%, 62%);
+  --red-bg: hsl(0, 63%, 62%, 0.2);
+
+  --purple-txt: hsl(245, 100%, 85%);
+  --purple-bg: rgba(118, 108, 233, 0.2);
+
+  --pink-txt: hsl(320, 63%, 62%);
+  --pink-bg: hsl(320, 63%, 62%, 0.2);
+
+  --cyan-txt: hsl(180, 63%, 62%);
+  --cyan-bg: hsl(180, 63%, 62%, 0.2);
+
   --font: "Poppins", sans-serif;
   --mono-font: "Roboto Mono", monospace;
 }
@@ -63,6 +78,91 @@
 
 .greenTxt {
   color: var(--green-txt);
+}
+
+.yellow {
+  color: var(--yellow-txt);
+  background: var(--yellow-bg);
+
+  i {
+    color: var(--yellow-bg);
+  }
+
+  .usetxt {
+    color: var(--yellow-txt);
+  }
+}
+
+.yellowTxt {
+  color: var(--yellow-txt);
+}
+
+.purple {
+  color: var(--purple-txt);
+  background: var(--purple-bg);
+
+  i {
+    color: var(--purple-bg);
+  }
+
+  .usetxt {
+    color: var(--purple-txt);
+  }
+}
+
+.purpleTxt {
+  color: var(--purple-txt);
+}
+
+.red {
+  color: var(--red-txt);
+  background: var(--red-bg);
+
+  i {
+    color: var(--red-bg);
+  }
+
+  .usetxt {
+    color: var(--red-txt);
+  }
+}
+
+.redTxt {
+  color: var(--red-txt);
+}
+
+.pink {
+  color: var(--pink-txt);
+  background: var(--pink-bg);
+
+  i {
+    color: var(--pink-bg);
+  }
+
+  .usetxt {
+    color: var(--pink-txt);
+  }
+}
+
+.pinkTxt {
+  color: var(--pink-txt);
+}
+
+.cyan {
+  color: var(--cyan-txt);
+  background: var(--cyan-bg);
+
+  i {
+    color: var(--cyan-bg);
+  }
+
+  .usetxt {
+    color: var(--cyan-txt);
+  }
+}
+
+.cyanTxt {
+  color: var(--cyan-txt);
 }
 
 * {
@@ -129,10 +229,10 @@ body {
 
     i {
       position: absolute;
-      bottom: 0;
-      font-size: 8rem;
+      bottom: 4%;
+      font-size: 7.5rem;
       transform: rotate(-20deg);
-      right: 2%;
+      right: 5%;
     }
   }
 }
@@ -177,12 +277,13 @@ body {
       letter-spacing: 1px;
       user-select: none;
       cursor: pointer;
+      transition: font-size 100ms linear;
     }
 
     .active {
       cursor: unset;
       font-weight: 600;
-      //font-size: 1.3rem;
+      font-size: 1.5rem;
 
       // &::before {
       //   content: ">";
