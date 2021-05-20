@@ -5,7 +5,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { listVariants, headVariants } from "../../data/variants";
 import Include from "../../components/Include";
 
-export default function category({ configs, items }) {
+export default function category({
+  configs,
+  items,
+  err = false,
+  message = "",
+}) {
   const router = useRouter();
   const [mState, setMState] = useState(items);
   const [oState, setOState] = useState(
@@ -25,15 +30,23 @@ export default function category({ configs, items }) {
     setOState(onState[0]);
   };
 
+  if (err) {
+    return (
+      <>
+        <Include title="Server Error" />
+        <main>
+          <div className="errPanel">
+            <h1>{message}</h1>
+            <p>Check your internet connection or Reload page</p>
+          </div>
+        </main>
+      </>
+    );
+  }
+
   return (
     <div>
-      <Include
-        title={
-          oState !== undefined
-            ? oState.name.charAt(0).toUpperCase() + oState.name.slice(1)
-            : ""
-        }
-      />
+      <Include title={oState !== undefined ? oState.name : router.query.name} />
 
       <main>
         <div className={`sideBar ${configs.acc}`}>
@@ -108,18 +121,24 @@ export default function category({ configs, items }) {
 export async function getStaticProps(context) {
   const url = `https://raw.githubusercontent.com/epicX67/md_blogs/main/categories/${context.params.name}.json`;
 
-  const res = await fetch(url);
-  const data = await res.json();
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
 
-  let cItems = data.items.map((item) => ({ ...item, selected: false }));
+    let cItems = data.items.map((item) => ({ ...item, selected: false }));
 
-  if (cItems.length > 0) {
-    cItems[0].selected = true;
+    if (cItems.length > 0) {
+      cItems[0].selected = true;
+    }
+
+    return {
+      props: { configs: data.configs, items: cItems },
+    };
+  } catch (err) {
+    return {
+      props: { err: true, message: err.message },
+    };
   }
-
-  return {
-    props: { configs: data.configs, items: cItems },
-  };
 }
 
 export async function getStaticPaths() {

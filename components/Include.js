@@ -2,9 +2,10 @@ import React from "react";
 import Head from "next/head";
 
 export default function Include({ title, desc }) {
+  const mTitle = title.charAt(0).toUpperCase() + title.slice(1);
   return (
     <Head>
-      <title>{title}</title>
+      <title>{mTitle}</title>
       <meta name="description" content={desc} />
       <link rel="icon" href="/favicon.ico" />
       <link
