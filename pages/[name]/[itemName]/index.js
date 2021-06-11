@@ -16,6 +16,7 @@ export default function category({
   const router = useRouter();
   const [mState, setMState] = useState(items);
   const [oState, setOState] = useState(mState.length !== 0 ? mState[0] : []);
+  const [nav, setNav] = useState(false);
 
   const doSelect = (name) => {
     const route = router.asPath;
@@ -44,7 +45,10 @@ export default function category({
       <Include title={oState !== undefined ? oState.name : router.query.name} />
 
       <main>
-        <div className={`sideBar ${acc}`}>
+        <div className={`sideBar ${acc} ${!nav && "sideBar-hide"}`}>
+          <button className="navBtn" onClick={() => setNav(!nav)}>
+            <i className={nav ? "ri-close-line " : "ri-menu-2-line"}></i>
+          </button>
           <motion.i
             initial={{ y: 0, x: "-60%", left: "50%", rotate: "-20deg" }}
             animate={{ y: 20 }}

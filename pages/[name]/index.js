@@ -17,6 +17,8 @@ export default function category({
     mState[0] !== null ? mState[0] : undefined
   );
 
+  const [nav, setNav] = useState(false);
+
   const doSelect = (name) => {
     // Updating Selection list
     const nState = mState.map((item) => ({
@@ -49,7 +51,10 @@ export default function category({
       <Include title={oState !== undefined ? oState.name : router.query.name} />
 
       <main>
-        <div className={`sideBar ${configs.acc}`}>
+        <div className={`sideBar ${configs.acc} ${!nav && "sideBar-hide"}`}>
+          <button className="navBtn" onClick={() => setNav(!nav)}>
+            <i className={nav ? "ri-close-line " : "ri-menu-2-line"}></i>
+          </button>
           <motion.i
             initial={{ y: 0, x: "-60%", left: "50%", rotate: "-20deg" }}
             animate={{ y: 20 }}

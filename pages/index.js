@@ -15,9 +15,9 @@ export default function Home({ items }) {
       </Head>
 
       <main>
-        <a target="_blank" href="Game.html" className="heading">
+        <div target="_blank" className="heading">
           <img src="hub.svg" alt="" />
-        </a>
+        </div>
 
         <div className="mCategories">
           {items.map((item) => {
