@@ -57,11 +57,11 @@ export default function Section({
             className="listPost"
           >
             {posts.map((post) => (
-              <motion.div variants={headVariants}>
-                <Link
-                  key={post.thumbnail + post.title}
-                  href={`${router.asPath}/${post.title}`}
-                >
+              <motion.div
+                key={post.thumbnail + post.title}
+                variants={headVariants}
+              >
+                <Link href={`${router.asPath}/${post.title}`}>
                   <div className="item">
                     <div className="thumbnail">
                       <img src={post.thumbnail} alt="" />
