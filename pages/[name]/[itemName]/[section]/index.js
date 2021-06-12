@@ -84,7 +84,7 @@ export default function Section({
 
 export async function getStaticProps(context) {
   const { name, itemName, section } = context.params;
-  const URL = `${db.repo}/main`;
+  const URL = db.repo;
 
   const mUrl = `${URL}/categories/${name}/${itemName}/${section}/posts.json`;
   const sUrl = `${URL}/categories/${name}.json`;
@@ -110,7 +110,7 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const URL = `${db.repo}`;
+  const URL = db.repo;
   const mUrl = `${URL}/DB.json`;
   const res = await fetch(mUrl);
   const data = await res.json();
