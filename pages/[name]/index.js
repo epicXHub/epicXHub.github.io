@@ -125,7 +125,7 @@ export default function category({
 }
 
 export async function getStaticProps(context) {
-  const url = `${db.repo}/main/categories/${context.params.name}.json`;
+  const url = `${db.repo}/categories/${context.params.name}.json`;
 
   try {
     const res = await fetch(url);

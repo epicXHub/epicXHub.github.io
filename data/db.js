@@ -1,8 +1,9 @@
-const repo = "https://raw.githubusercontent.com/epicX67/md_blogs";
+const repo =
+  "https://raw.githubusercontent.com/epicXHub/epicXHub.github.io/master/DB";
 
 const data = {
   repo: repo,
-  repo_db: `${repo}/main/DB.json`,
+  repo_db: `${repo}/DB.json`,
 };
 
 export default data;
