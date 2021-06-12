@@ -31,6 +31,7 @@ export default function category({
     // Updating catagory list
     const onState = nState.filter((item) => item.name === name);
     setOState(onState[0]);
+    setNav(false);
   };
 
   if (err) {
