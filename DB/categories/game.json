@@ -1,0 +1,32 @@
+{
+	"configs": {
+		"acc": "blue",
+		"logo": "ri-gamepad-fill"
+	},
+	"items": [{
+			"name": "Krunker.io",
+			"options": [{
+				"name": "Mods",
+				"logo": "ri-dashboard-fill"
+			},
+			{
+				"name": "Maps",
+				"logo": "ri-dashboard-fill"
+			}]
+		},
+		{
+			"name": "FarCry 2",
+			"options": [{
+				"name": "Mods",
+				"logo": "ri-dashboard-fill"
+			}]
+		},
+		{
+			"name": "CSGO",
+			"options": [{
+				"name": "Mods",
+				"logo": "ri-dashboard-fill"
+			}]
+		}
+	]
+}

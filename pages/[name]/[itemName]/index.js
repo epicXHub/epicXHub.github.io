@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import Head from "next/head";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Include from "../../../components/Include";
 import { listVariants, headVariants } from "../../../data/variants";
 import { motion, AnimatePresence } from "framer-motion";
+import db from "../../../data/db";
 
 export default function category({
   logo,
@@ -118,7 +118,7 @@ export default function category({
 
 export async function getStaticProps(context) {
   const { name, itemName } = context.params;
-  const URL = "https://raw.githubusercontent.com/epicX67/md_blogs/main";
+  const URL = `${db.repo}/main`;
 
   const sUrl = `${URL}/categories/${name}.json`;
 
@@ -144,7 +144,7 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const URL = "https://raw.githubusercontent.com/epicX67/md_blogs/main";
+  const URL = `${db.repo}/main`;
   const mUrl = `${URL}/DB.json`;
   const res = await fetch(mUrl);
   const data = await res.json();

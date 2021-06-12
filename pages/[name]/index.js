@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { motion, AnimatePresence } from "framer-motion";
 import { listVariants, headVariants } from "../../data/variants";
 import Include from "../../components/Include";
+import db from "../../data/db";
 
 export default function category({
   configs,
@@ -124,7 +125,7 @@ export default function category({
 }
 
 export async function getStaticProps(context) {
-  const url = `https://raw.githubusercontent.com/epicX67/md_blogs/main/categories/${context.params.name}.json`;
+  const url = `${db.repo}/main/categories/${context.params.name}.json`;
 
   try {
     const res = await fetch(url);
@@ -147,7 +148,7 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const url = `https://raw.githubusercontent.com/epicX67/md_blogs/main/DB.json`;
+  const url = db.repo_db;
   const res = await fetch(url);
   const data = await res.json();
 

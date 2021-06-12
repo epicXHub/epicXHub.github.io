@@ -5,6 +5,7 @@ import rehypeRaw from "rehype-raw";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Include from "../../../../../components/Include";
+import db from "../../../../../data/db";
 
 const components = {
   code({ node, inline, className, children, ...props }) {
@@ -77,7 +78,7 @@ export default function Section({
 
 export async function getStaticProps(context) {
   const { name, itemName, section, postName } = context.params;
-  const URL = "https://raw.githubusercontent.com/epicX67/md_blogs/main";
+  const URL = `${db.repo}/main`;
 
   const mUrl = `${URL}/categories/${name}/${itemName}/${section}/posts.json`;
   const sUrl = `${URL}/categories/${name}.json`;
@@ -110,7 +111,7 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const URL = "https://raw.githubusercontent.com/epicX67/md_blogs/main";
+  const URL = `${db.repo}/main`;
   const mUrl = `${URL}/DB.json`;
   const res = await fetch(mUrl);
   const data = await res.json();

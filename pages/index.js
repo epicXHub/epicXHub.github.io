@@ -1,6 +1,6 @@
-import Head from "next/head";
 import Link from "next/link";
 import Include from "../components/Include";
+import db from "../data/db";
 
 export default function Home({ items }) {
   return (
@@ -24,15 +24,21 @@ export default function Home({ items }) {
             );
           })}
         </div>
+        <footer>
+          <p>
+            Made with <span className="redTxt">❤</span> using
+          </p>
+          <a target="_blank" href="">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Nextjs-logo.svg/207px-Nextjs-logo.svg.png" />
+          </a>
+        </footer>
       </main>
     </div>
   );
 }
 
 export async function getStaticProps(context) {
-  const res = await fetch(
-    "https://raw.githubusercontent.com/epicX67/md_blogs/main/DB.json"
-  );
+  const res = await fetch(db.repo_db);
   const data = await res.json();
 
   return {

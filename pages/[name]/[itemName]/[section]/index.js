@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { headVariants } from "../../../../data/variants";
+import db from "../../../../data/db";
 
 export default function Section({
   posts,
@@ -83,7 +84,7 @@ export default function Section({
 
 export async function getStaticProps(context) {
   const { name, itemName, section } = context.params;
-  const URL = "https://raw.githubusercontent.com/epicX67/md_blogs/main";
+  const URL = `${db.repo}/main`;
 
   const mUrl = `${URL}/categories/${name}/${itemName}/${section}/posts.json`;
   const sUrl = `${URL}/categories/${name}.json`;
@@ -109,7 +110,7 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const URL = "https://raw.githubusercontent.com/epicX67/md_blogs/main";
+  const URL = `${db.repo}/main`;
   const mUrl = `${URL}/DB.json`;
   const res = await fetch(mUrl);
   const data = await res.json();
