@@ -848,6 +848,11 @@ footer {
     margin-top: 5rem;
   }
 
+  .mCategories {
+    $paddingG: 2.5rem;
+    padding: 2rem $paddingG;
+  }
+
   .sideBar-hide {
     transform: translateX(-100%);
   }
