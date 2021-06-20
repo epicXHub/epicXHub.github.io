@@ -31,13 +31,13 @@ export default function Section({
   // section,
   acc = "blue",
   logo = "ri-dashboard-fill",
-  url,
+  desc,
   markdownData,
 }) {
   const router = useRouter();
   return (
     <div>
-      <Include title={postName} desc={url} />
+      <Include title={postName} desc={desc} />
 
       <main>
         <div className={`subSideBar ${acc}`}>
@@ -106,6 +106,7 @@ export async function getStaticProps(context) {
       acc: sData.configs.acc,
       markdownData: markdownData,
       url: post.markdown_url,
+      desc: post.description,
     },
   };
 }
